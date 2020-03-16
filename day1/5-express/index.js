@@ -12,6 +12,10 @@ app.use(bodyParser());
 app.use('/user', user);
 app.use('/order', order);
 
+app.use((req, res) => {
+	res.status(404).send('404 page.');
+});
+
 app.listen(3000, err => {
 	if (err) {
 		throw err;
