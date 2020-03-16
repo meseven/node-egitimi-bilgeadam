@@ -1,0 +1,12 @@
+div
+	- var user = false
+	- var authorised = false;
+
+	if user
+		div 
+			| #{user}
+	else if authorised
+		div 
+			| authorised
+	else
+		div else block

@@ -1,0 +1,8 @@
+body 
+	- var authenticated = false
+
+	div(style=authenticated ? 'color:green' : 'color:red')
+		| Selam #{authenticated ? name : 'User yok'}
+
+
+	include footer.pug
