@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const User = require("../models/user");
 
@@ -58,17 +59,17 @@ router.post("/login", (req, res) => {
 					});
 				}
 
-				res.json({ status: true });
-				// const payload = {
-				// 	username
-				// };
-				// const token = jwt.sign(payload, req.app.get('api_secret_key'), {
-				// 	expiresIn: 720 // 12 saat
-				// });
-				// res.json({
-				// 	status: true,
-				// 	token
-				// })
+				const payload = {
+					username
+				};
+				const token = jwt.sign(payload, process.env.JWT_SECRET_KEY, {
+					expiresIn: 720 // 12 saat
+				});
+
+				res.json({
+					status: true,
+					token
+				});
 			});
 		}
 	);
