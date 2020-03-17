@@ -10,10 +10,12 @@ require("dotenv").config();
 require("./db")();
 
 const index = require("./routes/index");
-const users = require("./routes/users");
 const books = require("./routes/books");
 
 const app = express();
+
+// middleware
+const verifyToken = require("./middleware/verify-token");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -28,8 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", index);
-app.use("/users", users);
-app.use("/books", books);
+app.use("/books", verifyToken, books);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

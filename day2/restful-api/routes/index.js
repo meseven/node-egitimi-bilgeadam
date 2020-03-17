@@ -49,6 +49,8 @@ router.post("/login", (req, res) => {
 					status: false,
 					message: "Authentication failed, user not found."
 				});
+
+				return false;
 			}
 
 			bcrypt.compare(password, user.password).then(result => {
