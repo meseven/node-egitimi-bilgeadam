@@ -3,8 +3,8 @@ const router = express.Router();
 
 const Book = require("../models/book");
 
-router.put("/:movie_id", (req, res, next) => {
-	Book.findByIdAndUpdate(req.params.movie_id, req.body, {
+router.put("/:book_id", (req, res, next) => {
+	Book.findByIdAndUpdate(req.params.book_id, req.body, {
 		new: true
 	})
 		.then(book => {
@@ -30,21 +30,7 @@ router.get("/list", function(req, res, next) {
 });
 
 router.post("/", function(req, res, next) {
-	// const book = new Book({
-	// 	title: req.body.title,
-	// 	author: req.body.author,
-	// 	year: req.body.year
-	// });
-
-	// v.2
-	const { title, author, year } = req.body;
-
 	const book = new Book(req.body);
-
-	// v3
-	// const book = new Book({
-	// 	...req.body
-	// });
 
 	book
 		.save()
@@ -52,8 +38,18 @@ router.post("/", function(req, res, next) {
 		.catch(e =>
 			res.json({ error: { statusCode: 1, message: "Kayıt eklenemedi." } })
 		);
+});
 
-	// res.json({ name: "franz kafka - dönüşüm" });
+router.delete("/:book_id", (req, res, next) => {
+	Book.findByIdAndRemove(req.params.book_id)
+		.then(book => {
+			if (!book) res.json({ message: "The book was not found.", code: 99 });
+
+			res.json({ status: 1 });
+		})
+		.catch(err => {
+			res.json(err);
+		});
 });
 
 module.exports = router;
