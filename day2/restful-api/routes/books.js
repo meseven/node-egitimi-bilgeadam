@@ -8,6 +8,16 @@ router.get("/", function(req, res, next) {
 	res.json({ name: "franz kafka - dönüşüm" });
 });
 
+router.get("/list", function(req, res, next) {
+	Book.find({})
+		.then(data => {
+			res.json(data);
+		})
+		.catch(err => {
+			res.json(err);
+		});
+});
+
 router.post("/", function(req, res, next) {
 	// const book = new Book({
 	// 	title: req.body.title,
