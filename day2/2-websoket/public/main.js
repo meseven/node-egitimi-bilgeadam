@@ -1,5 +1,5 @@
 $(() => {
-	const socket = io.connect("http://localhost/");
+	const socket = io.connect("46.101.133.54");
 	const username = prompt("Please enter your name", "");
 
 	if (username != null) {
