@@ -3,10 +3,21 @@ const router = express.Router();
 
 const Book = require("../models/book");
 
-/* GET users listing. */
-router.get("/", function(req, res, next) {
-	res.json({ name: "franz kafka - dönüşüm" });
+router.put("/:movie_id", (req, res, next) => {
+	Book.findByIdAndUpdate(req.params.movie_id, req.body, {
+		new: true
+	})
+		.then(book => {
+			if (!book) res.json({ message: "The book was not found.", code: 99 });
+
+			res.json(book);
+		})
+		.catch(err => {
+			res.json(err);
+		});
 });
+
+router.get("/", function(req, res, next) {});
 
 router.get("/list", function(req, res, next) {
 	Book.find({})
@@ -28,11 +39,7 @@ router.post("/", function(req, res, next) {
 	// v.2
 	const { title, author, year } = req.body;
 
-	const book = new Book({
-		title,
-		author,
-		year
-	});
+	const book = new Book(req.body);
 
 	// v3
 	// const book = new Book({
