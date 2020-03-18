@@ -2,7 +2,7 @@ body {
   overflow: hidden;
 }
 .container {
-  background-color: red;
+  /* background-color: red; */
   height: 100vh;
   padding-top: 200px;
 }
@@ -27,7 +27,8 @@ body {
   cursor: pointer;
 }
 
-#colors li:hover {
+#colors li:hover,
+#colors li.active {
   border-color: #666;
 }
 
