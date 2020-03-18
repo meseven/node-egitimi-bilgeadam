@@ -1,0 +1,17 @@
+extends layout
+
+block append styles
+	link(rel="stylesheet", href="css/colors.css")
+
+block content
+	.container
+		.palette
+			ul#colors
+				li.red
+				li.yellow
+				li.green
+				li.aquamarine
+				li.black
+
+block append scripts
+	script(src="js/colors.js")

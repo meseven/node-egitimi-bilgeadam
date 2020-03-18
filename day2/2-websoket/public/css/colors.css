@@ -1,0 +1,52 @@
+body {
+  overflow: hidden;
+}
+.container {
+  background-color: red;
+  height: 100vh;
+  padding-top: 200px;
+}
+
+.container .palette {
+  height: 100px;
+  width: 200px;
+  background-color: #f1f1f1;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+#colors {
+  list-style-type: none;
+  display: flex;
+}
+#colors li {
+  width: 30px;
+  height: 30px;
+  margin: 2px;
+  border: solid 2px #ddd;
+  cursor: pointer;
+}
+
+#colors li:hover {
+  border-color: #666;
+}
+
+#colors li.red {
+  background-color: red;
+}
+
+#colors li.green {
+  background-color: green;
+}
+
+#colors li.yellow {
+  background-color: yellow;
+}
+
+#colors li.aquamarine {
+  background-color: aquamarine;
+}
+
+#colors li.black {
+  background-color: black;
+}

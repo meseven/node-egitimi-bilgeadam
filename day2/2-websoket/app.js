@@ -20,6 +20,10 @@ app.get("/", (req, res) => {
 	res.render("index");
 });
 
+app.get("/colors", (req, res) => {
+	res.render("colors");
+});
+
 app.listen(3000, err => {
 	console.log("Server is running");
 });
