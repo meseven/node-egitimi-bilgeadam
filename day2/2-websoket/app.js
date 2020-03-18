@@ -12,6 +12,10 @@ io.on("connection", function(socket) {
 	socket.on("newUser", data => {
 		socket.broadcast.emit("newUser", data);
 	});
+
+	socket.on("changeColor", data => {
+		socket.broadcast.emit("changeColor", data);
+	});
 });
 
 app.set("view engine", "pug");
